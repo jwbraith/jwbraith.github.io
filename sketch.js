@@ -1,10 +1,14 @@
 //the text container for the number
 //the button variable
 //the number to put in the text container
+//the number to put in the rate text container
+//the number that auto increases the number of chopped trees
 
 let choppedTrees;
 let axe;
-let firstVal = 0;
+let firstVal = 0.0;
+let treeRate;
+let chopRate = 0.0;
 
 //the text container for the beavers number
 //the button variable for buying a new beaver
@@ -27,10 +31,12 @@ let thirdRow;
 
 function setup() {
 	// createCanvas(500, 500);
+	frameRate(20);
 	//assign selected ids to each text container
 	choppedTrees = select('#numTrees');
 	numBeavers = select('#beavers');
 	numBreeders = select('#breeders');
+	treeRate = select('#treeRate');
 
 	//assign buttons by selected id
 	axe = select('#axe');
@@ -40,10 +46,10 @@ function setup() {
 	//tie functions to each clickable button
 	axe.mousePressed(increaseVal);
 	buy.mousePressed(buyBeav);
-	// hire.mousePressed();
+	hire.mousePressed(hireBreeder);
 
 	thirdRow = select('#thirdRow');
-	thirdRow.style('display:none');
+	thirdRow.style('visibility:hidden');
 }
 
 function increaseVal() {
@@ -51,9 +57,17 @@ function increaseVal() {
 }
 
 function buyBeav() {
-	if (firstVal >= 10) {
-		firstVal -= 10;
+	if (firstVal >= 2) {
 		secondVal += 1;
+		chopRate = secondVal * 0.002;
+		firstVal -= 2;
+	}
+}
+
+function hireBreeder() {
+	if (secondVal >= 4) {
+		thirdVal += 1;
+		secondVal -= 4;
 	}
 }
 
@@ -63,13 +77,12 @@ function draw() {
 	choppedTrees.html(firstVal.toFixed(2));
 	numBeavers.html(secondVal.toFixed(2));
 	numBreeders.html(thirdVal.toFixed(2));
-	for (let i = 0;i<secondVal;i++) {
-		firstVal += 0.002;
+	treeRate.html(chopRate.toFixed(3));
+	if (secondVal > 0) {
+		firstVal += chopRate;
 	}
 	if (firstVal > 5) {
-		thirdRow.style('display:block');
+		thirdRow.style('visibility:visible');
 	}
-	// clear();
-	// pee = createP(firstVal);
-	// background(bgcolour);
+
 }

@@ -8,19 +8,28 @@
 	<title>hypertext</title>
 	<table>
 		<tr>
+			<th>Item</th>
+			<th>Number of</th>
+			<th>Action</th>
+			<th>Rate</th>
+			<th>Pre-req</th>
+		</tr>
+		<tr>
 			<td>Trees Chopped</td>
 			<td id="numTrees"></td>
-			<td><button id="axe">Chop!</button></td>
+			<td><button type="button" id="axe">Chop!</button></td>
+			<td id="treeRate"></td>
+			<td>None</td>
 		</tr>
 		<tr>
 			<td>Beavers Chompin'</td>
 			<td id="beavers"></td>
-			<td><button id="buy">Buy a Beaver</button></td>
+			<td><button type="button" id="buy">Buy a Beaver</button></td>
 		</tr>
 		<tr id="thirdRow">
 			<td>Beaver Breeders</td>
 			<td id="breeders"></td>
-			<td><button id="hire">Hire a Beaver Breeder</button></td>
+			<td><button type="button" id="hire">Hire a Beaver Breeder</button></td>
 		</tr>
 	</table>
 	<script src="libraries/p5.js"></script>
@@ -30,17 +39,29 @@
 
 	<style>
 		body {
-			margin:0;
+			margin:24px;
 			padding:0;
 			overflow: hidden;
+			background-color: black;
 		}
 		canvas {
 			margin:auto;
 		}
-		table, th, td {
-			border: 2px solid black;
+		table, th, tr, td {
+			border: 2px solid white;
 			text-align: center;
 			width: 1200px;
+			color: white;
+			font-size: 1.5em;
+		}
+		button {
+			font-size: 0.5em;
+			border-radius: 4px;
+			box-shadow: 0 6px #999;
+		}
+		button:active {
+			background-color: grey;
+			transform: translateY(2px);
 		}
 	</style>
 </head>
