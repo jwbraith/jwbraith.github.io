@@ -13,10 +13,14 @@ let chopRate = 0.0;
 //the text container for the beavers number
 //the button variable for buying a new beaver
 //the number to put in the text container
+//the number for the rate container
+//the number that auto increases the number of beavers
 
 let numBeavers;
 let buy;
 let secondVal = 0;
+let birthRate;
+let breedRate = 0.0;
 
 //the text container for the number of beaver breeders
 //the button variable for hiring a new beaver breeder
@@ -37,6 +41,7 @@ function setup() {
 	numBeavers = select('#beavers');
 	numBreeders = select('#breeders');
 	treeRate = select('#treeRate');
+	birthRate = select('#birthRate');
 
 	//assign buttons by selected id
 	axe = select('#axe');
@@ -59,15 +64,21 @@ function increaseVal() {
 function buyBeav() {
 	if (firstVal >= 2) {
 		secondVal += 1;
-		chopRate = secondVal * 0.002;
+		chopUpdate();
 		firstVal -= 2;
 	}
+}
+
+function chopUpdate() {
+	chopRate = secondVal * 0.002;
 }
 
 function hireBreeder() {
 	if (secondVal >= 4) {
 		thirdVal += 1;
+		breedRate = thirdVal * 0.001;
 		secondVal -= 4;
+		chopUpdate();
 	}
 }
 
@@ -78,8 +89,13 @@ function draw() {
 	numBeavers.html(secondVal.toFixed(2));
 	numBreeders.html(thirdVal.toFixed(2));
 	treeRate.html(chopRate.toFixed(3));
+	birthRate.html(breedRate.toFixed(3));
 	if (secondVal > 0) {
 		firstVal += chopRate;
+	}
+	if (thirdVal > 0) {
+		secondVal += breedRate;
+		chopUpdate();
 	}
 	if (firstVal > 5) {
 		thirdRow.style('visibility:visible');
