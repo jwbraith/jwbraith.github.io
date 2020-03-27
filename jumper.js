@@ -8,10 +8,6 @@ class Jumper {
         this.lifespan = 255;
         this.maxspeed = 18;
         this.maxforce = 0.5;
-        this.lerpAmt = 0.0;
-        this.col1 = 0.0;
-        this.col2 = 0.0;
-        this.col3 = 0.0;
     }
 
     aim() {

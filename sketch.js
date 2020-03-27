@@ -12,6 +12,7 @@ function setup() {
 
 function draw() {
 	// background(0);
+	
 	let gravity = createVector(0, 0.2);
 	for (let i = 0; i < jumpers.length; i++) {
 		jumpers[i].applyForce(gravity);
