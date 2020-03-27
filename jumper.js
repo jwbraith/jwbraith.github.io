@@ -4,11 +4,14 @@ class Jumper {
         this.vel = p5.Vector.random2D();
         // this.vel.setMag(0.3);
         this.acc = createVector(0, 0);
-        this.radius = 12;
-        this.lifespan = 120;
-        this.maxspeed = 12;
+        this.radius = 7;
+        this.lifespan = 255;
+        this.maxspeed = 18;
         this.maxforce = 0.5;
         this.lerpAmt = 0.0;
+        this.col1 = 0.0;
+        this.col2 = 0.0;
+        this.col3 = 0.0;
     }
 
     aim() {
@@ -17,7 +20,7 @@ class Jumper {
 
         if (this.isAtRest()) {
         let theta = random(-PI);
-        let magnitude = random(23,33);
+        let magnitude = random(12,24);
         
         propulsion.x = magnitude * sin(theta);
         propulsion.y = magnitude * cos(theta);
@@ -115,14 +118,23 @@ class Jumper {
             this.pos.y = height - this.radius;
             this.vel.y *= bounce;
         }
+        if (this.pos.y < this.radius) {
+            this.pos.y = this.radius;
+            this.vel.y *= bounce;
+        }
     }
 
     show() {
         //draw a circle
         push();
+        let rVal = map(this.vel.mag(), 0, 12, 0, 255);
+        let gVal = map(this.pos.x, this.radius, (width - this.radius), 0, 255);
+        let bVal = map(this.pos.y, (height - this.radius), this.radius, 0, 255);
         translate(this.pos.x, this.pos.y);
-        noStroke();
-        fill(255, 255, 255, this.lifespan);
+        // noStroke();
+        stroke(0);
+        strokeWeight(1);
+        fill(rVal, gVal, bVal, this.lifespan);
         ellipse(0, 0, this.radius * 2);
         pop();
     }
