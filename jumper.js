@@ -4,7 +4,7 @@ class Jumper {
         this.vel = p5.Vector.random2D();
         // this.vel.setMag(0.3);
         this.acc = createVector(0, 0);
-        this.radius = 7;
+        this.radius = 17;
         this.lifespan = 255;
         this.maxspeed = 18;
         this.maxforce = 0.5;
