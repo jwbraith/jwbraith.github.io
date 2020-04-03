@@ -5,10 +5,7 @@ var Engine = Matter.Engine,
     World = Matter.World,
     Bodies = Matter.Bodies,
     Bounds = Matter.Bounds,
-    Body = Matter.Body,
-    Constraint = Matter.Constraint,
-    Mouse = Matter.Mouse,
-    MouseConstraint = Matter.MouseConstraint;
+    Body = Matter.Body;
 
     let engine;
     let world;
@@ -16,60 +13,41 @@ var Engine = Matter.Engine,
 
     let circles = [];
     let boundaries = [];
-    let p1;
-    let p2;
-
-    let mConstraint;
+    let spinner;
 
 
 function setup() {
-    let canvas = createCanvas(600, 600);
+    createCanvas(600, 600);
     engine = Engine.create();
     world = engine.world;
     Engine.run(engine);
+    boundaries.push(new Boundary(240, height - 50, width, 50, PI / 7));
+    boundaries.push(new Boundary(330, 330, 300, 40, -PI/7));
+    boundaries.push(new Boundary(120, 140, 300, 40, PI/6));
     rectMode(CENTER);
-    let prev = null;
-    for (let x = width/2; x < 580; x += 40) {
-        let stuck = false;
-        if (!prev) {
-            stuck = true;
-        }
-        let p = new Circle(x, 100, 10, stuck);
-        circles.push(p);
-
-        if (prev) {
-            let options = {
-                bodyA: p.body,
-                bodyB: prev.body,
-                length: 20,
-                stiffness: 0.1
-            }
-            let tie = Constraint.create(options);
-            World.add(world, tie);
-        }
-        prev = p
-    }
-
-
-    boundaries.push(new Boundary(width/2, height, 600, 40));
-
-    let canvasMouse = Mouse.create(canvas.elt)
-    let options = {
-        mouse: canvasMouse
-    }
-    mConstraint = MouseConstraint.create(engine, options)
-    World.add(world, mConstraint);
 }
-
+function mouseDragged() {
+    
+    circles.push(new Faller(mouseX, mouseY, random (6, 10)));
+}
 
 
 function draw() {
     background(0);
+
     for (let i = 0; i < circles.length; i++) {
         circles[i].show();
+        if (circles[i].isOffScreen()) {
+            circles[i].kill();
+            circles.splice(i, 1);
+            i--;
+        }
     }
     for (let i = 0; i < boundaries.length; i++) {
         boundaries[i].show();
     }
+    // spinner.update();
+    // spinner.show();
+    
 
 }

@@ -1,8 +1,9 @@
 class Boundary {
-    constructor(x, y, w, h) {
+    constructor(x, y, w, h, theta) {
     let options = {
         friction: 0.01,
         restitution: 0.6,
+        angle: theta,
         isStatic: true
     }
     this.body = Bodies.rectangle(x, y, w, h, options);

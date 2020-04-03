@@ -1,10 +1,10 @@
-class Circle {
-    constructor(x, y, r, stuck) {
+class Faller {
+    constructor(x, y, r) {
     let options = {
         friction: 0.005,
         restitution: 0.6,
         density: 1,
-        isStatic: stuck
+        isStatic: false
     }
     this.body = Bodies.circle(x, y, r, options);
     this.radius = r;
