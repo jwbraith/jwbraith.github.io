@@ -1,5 +1,5 @@
 class Jumper {
-    constructor(x, y) {
+    constructor(x, y, dna1 = random(PI/2, (PI+PI/2)), dna2 = random(2, 24), hue = random(360)) {
         this.pos = createVector(x, y);
         this.vel = p5.Vector.random2D();
         // this.vel.setMag(0.3);
@@ -8,6 +8,10 @@ class Jumper {
         this.lifespan = 255;
         this.maxspeed = 18;
         this.maxforce = 0.5;
+        this.hasReproduced = false;
+        this.DNA1 = dna1 + random(-PI/12, PI/12);
+        this.DNA2 = dna2 + random(-0.5, 0.5);
+        this.hue = hue + random(-0.5, 0.5);
     }
 
     aim() {
@@ -15,8 +19,9 @@ class Jumper {
         //pick polar coordinates;
 
         if (this.isAtRest()) {
-        let theta = random(-PI);
-        let magnitude = random(12,24);
+        let theta = this.DNA1;
+        let magnitude = this.DNA2;
+        this.lifespan -= (magnitude * 8);
         
         propulsion.x = magnitude * sin(theta);
         propulsion.y = magnitude * cos(theta);
@@ -26,14 +31,14 @@ class Jumper {
     }
 
     isAtRest() {
+        let still = (this.vel.x > -0.1 && this.vel.x < 0.1 && this.vel.y > -0.1 && this.vel.y < 0.1);
+        let grounded = (this.pos.y > (height - (2 + this.radius * 2)));
         let isAtRest = false;
-        if (this.vel.x > -0.1 && this.vel.x < 0.1 && this.vel.y > -0.1 && this.vel.y < 0.1) {
+        if (still && grounded) {
             isAtRest = true;
         }
         return isAtRest;
     }
-
-
 
     friction() {
         let diff = height - (this.pos.y + this.radius);
@@ -67,48 +72,31 @@ class Jumper {
         this.acc.add(force);
     }
 
-    seek(target) {
-        // desired is a vector pointing from position to the target
-        let desired; 
-        desired = p5.Vector.sub(target, this.pos);
-        // Scale to maxspeed
-        desired.setMag(this.maxspeed);
-        // Steering = desired minus velocity
-        let steer = p5.Vector.sub(desired, this.velocity);
-        steer.limit(this.maxforce); // limit to maximum steering force
 
-        // return steer;
-        this.applyForce(steer);
+    consume(other) {
+        let proxim = dist(this.pos.x, this.pos.y, other.pos.x, other.pos.y);
+        if (proxim < (this.radius + other.radius)) {
+            return true;
+        }
     }
 
-    eat(list) {
-        let record = Infinity;
-        let closestIndex = -1;
-        for (let i = 0; i < list.length; i++) {
-            // let d = dist(this.pos.x, this.pos.y, list[i].pos.x, list[i].pos.y);
-            let d = createVector(); 
-            d = this.pos.dist(list[i].pos);
-            if (d < record) {
-                record = d;
-                closestIndex = i;
-            }
-        }
-        if (record < 10) {
-            list.splice(closestIndex, 1);
-        } else if (closestIndex > -1) {
-        this.seek(list[closestIndex].pos);
+    clone() {
+        let chance = random(1000);
+        if (chance < 1) {
+            this.lifespan -= 30;
+            return true;
+        } else {
+            return false;
         }
     }
 
     edges() {
-        let bounce = -0.9;
+        let bounce = -0.65;
         if (this.pos.x < this.radius) {
-            this.pos.x = this.radius;
-            this.vel.x *= bounce;
+            this.pos.x = width-this.radius;
         }
         if (this.pos.x > width - this.radius) {
-            this.pos.x = width - this.radius; 
-            this.vel.x *= bounce;
+            this.pos.x = this.radius; 
         }
         if (this.pos.y > height - this.radius) {
             this.pos.y = height - this.radius;
@@ -123,15 +111,13 @@ class Jumper {
     show() {
         //draw a circle
         push();
-        let rVal = map(this.vel.mag(), 0, 12, 0, 255);
-        let gVal = map(this.pos.x, this.radius, (width - this.radius), 0, 255);
-        let bVal = map(this.pos.y, (height - this.radius), this.radius, 0, 255);
-        translate(this.pos.x, this.pos.y);
+        colorMode(HSB);
+        // translate(this.pos.x, this.pos.y);
         // noStroke();
-        stroke(0);
+        stroke(0, this.lifespan);
         strokeWeight(1);
-        fill(rVal, gVal, bVal, this.lifespan);
-        ellipse(0, 0, this.radius * 2);
+        fill(this.hue, this.lifespan, this.lifespan);
+        ellipse(this.pos.x, this.pos.y, this.radius * 2);
         pop();
     }
 }
