@@ -4,24 +4,38 @@ let numJumpers = 16;
 let col = 255;
 let floaters = [];
 let numFloaters = 200;
-let explainer;
+let jumperPop;
+let floaterPop;
+
+//TO DO
+// - Add html explaining and presenting the sketch
+// - Add dynamic html that displays info
+// - Add dynamic html that allows control over sketch params
 
 function setup() {
 	createCanvas(600, 600);
 	background(0);
 	ellipseMode(CENTER);
-	explainer = createP(numJumpers);
 	for (let i = 0; i < numJumpers; i++) {
 		jumpers.push(new Jumper(random(100, 500), height - 37));
 	}
 	for (let i = 0; i < numFloaters; i++) {
 		floaters.push(new Floater(random(width), random(height)));
 	}
+	jumperPop = createP("Jumper Population: " + jumpers.length);
+	floaterPop = createP("Floater Population: " + numFloaters);
+	createP('');
+	createP("This sketch attempts to emulate an evolutionary process. Each circle (called 'jumpers') is nourished by a green dot (called 'floaters') and has a chance of cloning itself while alive. Each jumper has dna comprising three data points:");
+	createElement('li', "Jumping Angle");
+	createElement('li', "Jumping Magnitude");
+	createElement('li', "Hue");
+	createP("Each consumed floater proves $nourishment_value$. Each jump costs $jump_cost$ energy. Each jumper has a chance of cloning, which costs $clone_cost$ energy. I'm hoping the system of objects arrives at some equilibrium.");
 }
 
 function draw() {
 	background(0);
-	explainer.value(jumpers.length);
+	jumperPop.html("Jumper Population: " + jumpers.length);
+	floaterPop.html("Floater Population: " + floaters.length);
 	let gravity = createVector(0, 0.2);
 	if (frameCount % 30 == 0 && jumpers.length < 10) {
 		floaters.push(new Floater(random(width), random(height)));
