@@ -22,7 +22,7 @@ function resetButton() {
 
 function assignWords() {
 	noun1 = select('#noun1').value();
-	noun2 = select('#noun2').value();
+	noiseWord = select('#noiseWord').value();
 	plural = select('#plural').value();
 	verb1 = select('#verb1').value();
 
@@ -34,11 +34,11 @@ function assignWords() {
 	name = select('#name').value();
 	adject2 = select('#adject2').value();
 	relative = select('#relative').value();
-	adject3 = select('#adject3').value();
+	noun3 = select('#noun3').value();
 
 	
 	story.style('visibility: visible');
-	story.html("Dear " + relative + " <br>I am having tons of fun at Camp " + noun1 + ". I made a " + adject1 + " friend named " + name + ". They taught me how to " + verb1 + " " + adverb + ". I can't wait to show you! We played a " + adject2 + " game where we had to catch " + plural + " with a " + noun2 + ". Last night my fave counsellor " + verb3 + " me on the shoulder and told me I'm the best at " + verb2 + "! Can you believe that? I promise I'll bring you back a " + noun1 + "! <br><br>Love, <br>Johnny");
+	story.html("Have I ever told you how I met " + name + "? <br>Well it was a dark and " + adject1 + " evening, I had just helped my " + relative + " into bed when I heard a loud " + noiseWord + " at my front door. They told me their " + noun1 + " broke down and asked if I could " + verb1 + ". Well, I didn't have any " + plural + " so I invited them in. Next thing I know, we have been " + verb2 + " for hours! For being such " + adject2 + " company I " + adverb + " gave them my " + noun3 + " and told them to " + verb3 + " anytime. And that's how I met " + name + ".");
 	/**
 	 * Story element starts invisible and is made visible by this call
 	 */
