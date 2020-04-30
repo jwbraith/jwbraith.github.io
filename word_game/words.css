@@ -1,0 +1,41 @@
+body {
+    margin:0;
+    padding:0;
+    overflow: hidden;
+    background-color: rgb(22, 26, 28);
+}
+h1 {
+    color: azure;
+    text-align: center;
+}
+canvas {
+    margin:auto;
+}
+p, label {
+    font-size: 24px;
+    color: azure;
+}
+.container {
+    display: grid;
+    grid-template-columns: auto auto auto auto auto auto auto auto;
+    column-gap: 10px;
+    row-gap: 15px;
+}
+.submitter {
+    font-size: larger;
+    margin-top: 10px;
+    margin-left: 45%;
+}
+.resetter {
+    font-size: larger;
+    margin-top: 10px;
+}
+#story {
+    visibility: hidden;
+    margin-left: 12%;
+    margin-right: 12%;
+}
+input[type=text] {
+    padding: 0px 0px;
+    font-size: large;
+}

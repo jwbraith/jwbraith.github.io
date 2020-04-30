@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="words.css">
+	<title>Word Game</title>
+
+	<script src="libraries/p5.js"></script>
+	<script src="libraries/p5.dom.js"></script>
+	<script src="sketch.js"></script>
+
+</head>
+<body>
+	<h1>Funny Word Game</h1>
+
+	<div class="container">
+		<label for="noun1">Noun :</label>
+		<input type="text" name="noun1" id="noun1">
+		<label for="verb1">Verb :</label>
+		<input type="text" name="verb1" id="verb1">
+		<label for="adverb">Adverb :</label>
+		<input type="text" name="adverb" id="adverb">
+		<label for="adject1">Adjective :</label>
+		<input type="text" name="adject1" id="adject1">
+
+		<label for="noun2">Noun :</label>
+		<input type="text" name="noun2" id="noun2">
+		<label for="verb2">Verb (-ing) :</label>
+		<input type="text" name="verb2" id="verb2">
+		<label for="adject2">Adjective :</label>
+		<input type="text" name="adject2" id="adject2">
+		<label for="relative">Relative :</label>
+		<input type="text" name="relative" id="relative">
+
+		<label for="plural">Plural Noun :</label>
+		<input type="text" name="plural" id="plural">
+		<label for="verb3">Verb (-ed) :</label>
+		<input type="text" name="verb3" id="verb3">
+		<label for="name">Name :</label>
+		<input type="text" name="name" id="name">
+		<label for="adject3">Adjective :</label>
+		<input type="text" name="adject3" id="adject3">
+	</div>
+
+	<input type="submit" class="submitter">
+	<input type="submit" class="resetter" value="Reset">
+
+	<p id="story">
+		Dear $relative,<br><br>
+		I am having tons of fun at Camp $noun1. I made a 
+		$adjective1 friend named $name. They taught me how
+		to $verb $adverb. I can't wait to show you! We played
+		a $adjective game where we had to catch $pluralnoun
+		with $noun. Last night my fave counsellor $verbed me 
+		on the shoulder and told me I'm the best at $verbing!
+		Can you believe that?<br>
+		I promise I'll bring you back a $noun!<br><br>
+		Love,<br>
+		Johnny
+	</p>
+</body>
+</html>
