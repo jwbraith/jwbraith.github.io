@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8">
+    <title>Lab 2</title>
+    <style>
+      @font-face {
+        font-family: 'roboto';
+        src: url('Roboto/Roboto-Regular.ttf') format('truetype');
+        font-weight: normal;
+        font-style: normal;
+      }
+
+      @font-face {
+        font-family: 'minotaur';
+        src: url('Minotaur/minotaur.ttf') format('truetype');
+        font-weight: normal;
+        font-style: normal;
+      }
+
+      /* Styling using universal selector */
+      * {
+        margin: 0px;
+        padding: 0px;
+        font-family: 'roboto';
+        color: whitesmoke;
+      }
+
+      /* Styling using element selectors */
+      body{
+        color: whitesmoke;
+        margin: 0px auto;
+        background-color: black;
+      }
+
+      header,
+      h1 {
+        font-family: 'minotaur';
+        color: whitesmoke;
+        font-size: 36pt;
+        letter-spacing: 4px;
+        word-spacing: 0.2em;
+        padding: 1%;
+        text-align: center;
+      }
+
+      p {
+        font-family: 'roboto';
+        line-height: 1.6em;
+        margin: 1em;
+        padding-left: 8%;
+        width: 80%;
+      }
+
+      ul,
+      ol {
+        align-self: center;
+        margin: 1em;
+        padding-left: 25%;
+      }
+
+      table {
+        border-spacing: 0px;
+        margin: 0px auto;
+        margin-top: 2%;
+      }
+
+      th {
+        padding: 0.8em;
+        border: 2px solid white;
+        background-color: rgb(12, 12, 12);
+        font-size: 1.5em;
+        text-align: center;
+      }
+
+      td {
+        padding: 0.8em;
+        border: 2px solid white;
+        font-size: 1.3em;
+        text-align: center;
+      }
+
+      /* Styling using pseudo-selectors */
+      tr:nth-of-type(2n) {
+        background: rgb(24, 24, 24)
+      }
+
+      tr:nth-of-type(2n+1) {
+        background: rgb(34, 34, 34)
+      }
+
+      /* Styling using attribute tags */
+      td[headers] {
+        font-size: 1.8em;
+      }
+
+      td[headers="dick"] {
+        color: red;
+      }
+
+      /* Styling using id selector */
+      #dumb {
+        margin-left: auto;
+        margin-right: auto;
+        display: block;
+      }
+
+      span, #dumb {
+        padding: 0.2em;
+        border: 2px solid ivory;
+      }
+
+      /* Styling using class selector */
+      .footnote {
+        font-size: 0.7em;
+      }
+    </style>
+  </head>
+
+  <body>
+    <header>
+      <h1>THREE BOOKS</h1>
+    </header>
+
+    <div id="content">
+      <p>Over the confined summer of the year 2020 I read three short novels by famous science fiction & fantasy
+        authors. </p>
+      <p>I first read <i>Guards! Guards!</i> by Terry Pratchett. My takeaway was of a world of dumb mobs held
+        together by the efforts of vanishingly few <b>principled</b> individuals.</p>
+      <p>Next came <i>Cat's Cradle</i> by Kurt Vonnegut. This book did not replenish any belief in human beings I may
+        once have had. It concerns the apocalyptic potential of human technology and our absurd apathy towards our own
+        doom.
+        Great read.</p>
+      <p>Ultimately I read <i>Ubik</i> by Phillip K. Dick. In case you are ever confronted by the question, the '<abbr title="Kindred">K</abbr>'
+        stands
+        for 'Kindred'<sup id="footnote1">1</sup>. The story concerns anti-psychic agents who survive an assassination attempt and find reality begin to unravel around them. More than employing the narrative device of an unreliable narrator, the internal reality of the fiction is presented as unreliable. Quite disorienting.</p>
+      <p>These three books exhibit three shared characteristics</p>
+      <ul>
+        <li>Fictional</li>
+        <li>Male Point of View</li>
+        <li>Envision Alternate Society</li>
+      </ul>
+      <p>The single most important part of <span>literary analysis</span> is contextless ranking, which is as follows:
+      </p>
+      <ol>
+        <li>Ubik</li>
+        <li>Cat's Cradle</li>
+        <li>Guards! Guards!</li>
+      </ol>
+
+        <img id="dumb" src="http://dummyimage.com/400x320/ccbbaa/000000" alt="Dumb" />
+
+      <table id="table">
+        <caption>Recently Unearthed Literary Details</caption>
+        <thead>
+          <tr>
+            <th>Title</th>
+            <th>Guards! Guards!</th>
+            <th>Cat's Cradle</th>
+            <th>Ubik</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Author</td>
+            <td>Terry Pratchett</td>
+            <td>Kurt Vonnegut</td>
+            <td>Phillip K. Dick</td>
+          </tr>
+          <tr>
+            <td>Publication Year</td>
+            <td>1989</td>
+            <td>1963</td>
+            <td>1969</td>
+          </tr>
+          <tr>
+            <td># of Pages</td>
+            <td>376 pages</td>
+            <td>304 pages</td>
+            <td>240 pages</td>
+          </tr>
+          <tr>
+            <td>Literary Impact</td>
+            <td>Middling</td>
+            <td>Minor</td>
+            <td>Major</td>
+          </tr>
+          <tr>
+            <td>Rating</td>
+            <td headers="pratch">&#9733;&#9733;&#9734;</td>
+            <td headers="vonne">&#9733;&#9733;</td>
+            <td headers="dick">&#9733;&#9733;&#9733;&#9733;&#9733;&#9733;&#9734;</td>
+          </tr>
+        </tbody>
+      </table>
+      <p class="footnote"><a href="#footnote1">1.</a> <a href="https://en.wikipedia.org/wiki/Philip_K._Dick">https://en.wikipedia.org/wiki/Philip_K._Dick</a></p>
+    </div>
+
+    <footer></footer>
+  </body>
+
+</html>
