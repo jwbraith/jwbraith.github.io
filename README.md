@@ -1,4 +1,4 @@
-## Johnny's GitHub page
+## jwbraith.github.io
 
 Sketches
 1. [Plinko](https://jwbraith.github.io/plinko/)
