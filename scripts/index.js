@@ -1,18 +1,19 @@
-let x = 10;
-let y = 10;
-let xVel = 1;
-let yVel = 1;
-let particle;
 
+let particles = [];
+let numberOfParticles = 100;
 
 function setup() {
   var canvas = createCanvas(400, 400);
-  particle = new Particle(10, 10);
+  for (let i = 0; i < numberOfParticles; i++) {
+    particles.push(new Particle(30, 30, 8));
+  }
   canvas.parent('sketch-holder')
 }
 
 function draw() {
   background(0);
-  particle.update();
-  particle.show();
+  for (let i = 0; i < particles.length; i++) {
+    particles[i].update();
+    particles[i].show();
+  }
 }
