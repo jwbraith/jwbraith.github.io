@@ -1,13 +1,18 @@
-let x, y;
+let x = 10;
+let y = 10;
+let xVel = 1;
+let yVel = 1;
+let particle;
+
 
 function setup() {
   var canvas = createCanvas(400, 400);
+  particle = new Particle(10, 10);
   canvas.parent('sketch-holder')
 }
 
 function draw() {
   background(0);
-  noStroke();
-  fill(255, 0, 0);
-  ellipse(10, 10, 10);
+  particle.update();
+  particle.show();
 }
