@@ -1,4 +1,3 @@
-let qTree;
 let particles = [];
 let numberOfParticles = 50;
 
@@ -11,36 +10,32 @@ function setup() {
   for (let i = 0; i < numberOfParticles; i++) {
     particles.push(new Particle(random(200), 30, 8));
   }
-
-  // creates the quadtree
-  let boundary = new Rectangle(200, 200, 200, 200);
-  qTree = new QuadTree(boundary, 4);
-
-
-  background(0);
-  qTree.show();
-
-  stroke(0, 234, 40);
-  rectMode(CENTER);
-  let range = new Rectangle(250, 250, 86, 75);
-  rect(range.x, range.y, range.w * 2, range.h * 2);
-
-
-
-
 }
 
 function draw() {
   background(0);
-  for (let i = 0; i < particles.length; i++) {
-    particles[i].update();
-    particles[i].show();
-    particles[i].setHighlight(false);
+
+  // creates the QUADTREE
+  let boundary = new Rectangle(width / 2, height / 2, height, width);
+  let qTree = new QuadTree(boundary, 4);
+
+  for (let p of particles) {
+    let point = new Point(p.x, p.y, p);
+    qTree.insert(point);
+
+    p.update();
+    p.show();
+    p.setHighlight(false);
   }
 
   for (let p of particles) {
-    for (let other of particles) {
+    let range = new Circle(p.x, p.y, p.r * 2);
+    let points = qTree.query(range);
+    for (let point of points) {
+      let other = point.userData;
+
       if (p !== other && p.intersects(other)) {
+        console.log("intersection!");
         p.setHighlight(true);
       }
     }

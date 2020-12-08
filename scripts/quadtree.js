@@ -1,7 +1,8 @@
 class Point {
-  constructor(x, y) {
+  constructor(x, y, userData) {
     this.x = x;
     this.y = y;
+    this.userData = userData;
   }
 }
 
@@ -28,8 +29,59 @@ class Rectangle {
   }
 }
 
+class Circle {
+  constructor(x, y, r) {
+    this.x = x;
+    this.y = y;
+    this.radius = r;
+    this.rSquared = this.radius * this.radius;
+  }
+
+  contains(point) {
+    // checks unidian distance and if it is less than radius squared
+    let dist = Math.pow(point.x - this.x, 2) + Math.pow(point.y - this.y, 2);
+    return dist <= this.rSquared;
+  }
+
+  intersects(range) {
+    var xDist = Math.abs(range.x - this.x);
+    var yDist = Math.abs(range.y - this.y);
+
+    //radius of the circle
+    var r = this.radius;
+
+    var w = range.w;
+    var h = range.h;
+
+    var edges = Math.pow(xDist - w, 2) + Math.pow(yDist - h, 2);
+
+    //no intersection
+    if (xDist > r + w || yDist > r + h) return false;
+
+    // intersection within the circle
+    if (xDist <= w || yDist <= h) return true;
+
+    // intersection on the edge of the circle
+    return edges <= this.rSquared;
+  }
+}
+
 class QuadTree {
   constructor(boundary, capacity) {
+    if (!boundary) {
+      throw TypeError('boundary is null or undefined');
+    }
+    if (!(boundary instanceof Rectangle)) {
+      throw TypeError('boundary should be a Rectangle');
+    }
+    if (typeof capacity !== 'number') {
+      throw TypeError(
+        `capacity should be a number but is a ${typeof capacity}`
+      );
+    }
+    if (capacity < 1) {
+      throw RangeError('capacity must be greater than 0');
+    }
     this.boundary = boundary;
     this.capacity = capacity;
     this.points = [];
@@ -60,44 +112,50 @@ class QuadTree {
     if (!this.boundary.contains(point)) {
       return false;
     }
+
     if (this.points.length < this.capacity) {
       this.points.push(point);
       return true;
-    } else {
-      if (!this.divided) {
-        this.subdivide();
-      }
-      if (this.northeast.insert(point)) {
-        return true;
-      } else if (this.northwest.insert(point)) {
-        return true;
-      } else if (this.southeast.insert(point)) {
-        return true;
-      } else if (this.southwest.insert(point)) {
-        return true;
-      }
+    }
+
+    if (!this.divided) {
+      this.subdivide();
+    }
+
+    if (
+      this.northeast.insert(point) ||
+      this.northwest.insert(point) ||
+      this.southeast.insert(point) ||
+      this.southwest.insert(point)
+    ) {
+      return true;
     }
   }
 
   query(range, found) {
-    if (!this.boundary.intersects(range)) {
+    if (!found) {
+      found = [];
+    }
+
+    if (!range.intersects(this.boundary)) {
       // empty array
       return found;
-    } else {
-      for (let p of this.points) {
-        if (range.contains(p)) {
-          found.push(p);
-        }
-      }
-      if (this.divided) {
-        this.northwest.query(range, found);
-        this.northeast.query(range, found);
-        this.southwest.query(range, found);
-        this.southeast.query(range, found);
-      }
-      return found;
     }
+
+    for (let p of this.points) {
+      if (range.contains(p)) {
+        found.push(p);
+      }
+    }
+    if (this.divided) {
+      this.northwest.query(range, found);
+      this.northeast.query(range, found);
+      this.southwest.query(range, found);
+      this.southeast.query(range, found);
+    }
+    return found;
   }
+
 
 
   show() {

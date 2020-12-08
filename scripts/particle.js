@@ -3,8 +3,6 @@ class Particle {
     this.pos = createVector(x, y);
     this.vel = p5.Vector.random2D().mult(1);
     this.radius = r;
-    this.colourHigh = color(random(255), random(255), random(255), 1);
-    this.colourLow = color(random(255), random(255), random(255), 0.5);
     this.highlight = false;
   }
 
