@@ -1,9 +1,11 @@
 class Particle {
   constructor(x, y, r) {
     this.pos = createVector(x, y);
-    this.vel = p5.Vector.random2D().mult(5);
+    this.vel = p5.Vector.random2D().mult(1);
     this.radius = r;
-    this.colour = color(random(255), random(255), random(255));
+    this.colourHigh = color(random(255), random(255), random(255), 1);
+    this.colourLow = color(random(255), random(255), random(255), 0.5);
+    this.highlight = false;
   }
 
   update() {
@@ -25,10 +27,23 @@ class Particle {
     }
   }
 
+  intersects(other) {
+    let distance = this.pos.dist(other.pos);
+    return (distance < this.radius + other.radius)
+  }
+
+  setHighlight(value) {
+    this.highlight = value;
+  }
+
   show() {
     noStroke();
-    fill(this.colour);
-    ellipse(this.pos.x, this.pos.y, this.radius);
+    if (this.highlight) {
+      fill(255);
+    } else {
+      fill(100);
+    }
+    ellipse(this.pos.x, this.pos.y, this.radius * 2);
   }
 
 }

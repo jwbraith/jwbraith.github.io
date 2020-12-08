@@ -36,6 +36,8 @@ class QuadTree {
     this.divided = false;
   }
 
+  // function that splits the parent's boundary into four child 
+  // boundaries.
   subdivide() {
     let x = this.boundary.x;
     let y = this.boundary.y;
@@ -52,12 +54,12 @@ class QuadTree {
     this.divided = true;
   }
 
+  // function that puts a point into a portion of the quadtree 
+  // or into one of that quadtree's children.
   insert(point) {
     if (!this.boundary.contains(point)) {
       return false;
     }
-
-
     if (this.points.length < this.capacity) {
       this.points.push(point);
       return true;
@@ -78,7 +80,6 @@ class QuadTree {
   }
 
   query(range, found) {
-
     if (!this.boundary.intersects(range)) {
       // empty array
       return found;
@@ -111,7 +112,6 @@ class QuadTree {
       this.southeast.show();
       this.southwest.show();
     }
-
     for (let p of this.points) {
       strokeWeight(3);
       point(p.x, p.y);
