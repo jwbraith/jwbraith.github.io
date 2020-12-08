@@ -12,19 +12,29 @@ function setup() {
   qt = new QuadTree(boundary, 4);
   console.log(qt);
 
-  // for (let i = 0; i < 50; i++) {
-  //   let p = new Point(random(width), random(height));
-  //   qt.insert(p);
-  // }
-}
-
-function draw() {
-  if (mouseIsPressed) {
-    let m = new Point(mouseX, mouseY);
-    qt.insert(m);
+  for (let i = 0; i < 250; i++) {
+    let p = new Point(random(width), random(height));
+    qt.insert(p);
   }
   background(0);
   qt.show();
+
+  stroke(0, 234, 40);
+  rectMode(CENTER);
+  let range = new Rectangle(250, 250, 86, 75);
+  rect(range.x, range.y, range.w * 2, range.h * 2);
+
+  let points = [];
+  qt.query(range, points);
+  for (p of points) {
+    strokeWeight(6);
+    point(p.x, p.y);
+  }
+
+}
+
+function draw() {
+
 }
 
 // function draw() {
