@@ -160,7 +160,7 @@ class QuadTree {
 
   show() {
     rectMode(CENTER);
-    stroke(255);
+    stroke(0, 255, 0);
     strokeWeight(1);
     noFill();
     rect(this.boundary.x, this.boundary.y, this.boundary.w * 2, this.boundary.h * 2);
