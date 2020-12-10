@@ -1,7 +1,7 @@
 class Particle {
   constructor(x, y, r) {
     this.pos = createVector(x, y);
-    this.vel = p5.Vector.random2D().mult(random(0.2, 1));
+    this.vel = p5.Vector.random2D().mult(random(0.05, 0.5));
     this.radius = r;
     this.highlight = false;
   }
