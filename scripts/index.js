@@ -1,14 +1,14 @@
 let particles = [];
-let numberOfParticles = 2000;
+let numberOfParticles = 1000;
 
 function setup() {
   // creates the canvas, puts in html element
-  var canvas = createCanvas(400, 400);
+  var canvas = createCanvas(200, 400);
   canvas.parent('sketch-holder')
 
   // creates the particles, puts into array
   for (let i = 0; i < numberOfParticles; i++) {
-    particles.push(new Particle(random(200), 30, 1));
+    particles.push(new Particle(random(width), random(height), random(0.5, 2.5)));
   }
 }
 
@@ -18,7 +18,7 @@ function draw() {
   // creates the QUADTREE
   let boundary = new Rectangle(width / 2, height / 2, height, width);
   let qTree = new QuadTree(boundary, 4);
-  qTree.show();
+  // qTree.show();
 
   for (let p of particles) {
     let point = new Point(p.pos.x, p.pos.y, p);
