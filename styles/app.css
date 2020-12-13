@@ -1,6 +1,6 @@
 /* import statements */
 
-@import url('https://fonts.googleapis.com/css2?family=Arvo:wght@700&family=Roboto&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif:wght@700&family=Roboto&display=swap');
 
 /* element selectors */
 
@@ -27,7 +27,7 @@ body {
 
 .header {
   font-size: 28pt;
-  font-family: 'Arvo', serif;
+  font-family: 'Noto Serif', serif;
   color: white;
   grid-row: 1;
   grid-column: 1 / span 5;
