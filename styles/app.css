@@ -18,10 +18,6 @@ body {
 
 .grid {
   display: grid;
-  width: 100vw;
-  height: 100vh;
-  grid-template-columns: 5vw repeat(3, 1fr) 5vw;
-  grid-template-rows: repeat(10, auto);
   place-items: center;
 }
 
@@ -34,30 +30,22 @@ body {
 }
 
 
-.text {
-  font-size: 12pt;
-  font-family: 'Roboto', sans-serif;
-  color: white;
-  padding: 1rem;
+.text-center {
+  margin: 0px;
 }
 
 /* id selectors */
 
-#opener {
-  width: 100%;
-  height: 100%;
-  grid-row: 2;
-  grid-column: 2;
+#main {
+  width: 100vw;
+  height: 100vh;
+  grid-template-columns: auto;
+  grid-template-rows: 2fr 1fr 1fr 1fr;
 }
 
-#explan {
-  width: 100%;
-  height: 100%;
-  grid-row: 3;
-  grid-column: 2;
-}
-
-#sketch-holder {
-  grid-row: 2 / span 4;
-  grid-column: 3 / span 2;
+#icon-links {
+  width: auto;
+  height: 80%;
+  grid-template-columns: 50px 50px 50px 50px;
+  grid-template-rows: auto;
 }
