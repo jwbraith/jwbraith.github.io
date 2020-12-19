@@ -13,12 +13,13 @@
 
     <!-- Own CSS ref -->
     <link rel="stylesheet" href="/styles/app.css">
+    <link rel="stylesheet" href="/styles/projects.css">
   </head>
 
   <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
       <div class="container-fluid">
-        <a class="navbar-brand fs-1" href="index.html">John Braithwaite</a>
+        <a class="navbar-brand fs-2" href="/">John Braithwaite</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText"
           aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
@@ -26,20 +27,32 @@
         <div class="collapse flex-column navbar-collapse" id="navbarText">
           <ul class="navbar-nav me-auto mb-2 mb-lg-0">
             <li class="nav-item">
-              <a class="nav-link active fs-2" aria-current="page" href="projects.html">Projects</a>
+              <a class="nav-link active fs-3" aria-current="page" href="projects.html">Projects</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link fs-2" href="#">Resume</a>
+              <a class="nav-link fs-3" href="#">Resume</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link fs-2" href="#">Contact</a>
+              <a class="nav-link fs-3" href="#">Contact</a>
             </li>
           </ul>
         </div>
       </div>
     </nav>
-    <div class="grid">
-      <div class="card m-3" style="width: 18rem;">
+    <div class="grid" id="projects">
+      <div class="card m-3" style="width: 260px;">
+        <img src="./assets/truchet-tiles.png" class="card-img-top" alt="truchet iles">
+        <div class="card-body">
+          <p class="card-text fs-4">Programmatically generated truchet tiling.</p>
+        </div>
+      </div>
+      <div class="card m-3" style="width: 260px;">
+        <img src="./assets/truchet-tiles.png" class="card-img-top" alt="truchet iles">
+        <div class="card-body">
+          <p class="card-text fs-4">Programmatically generated truchet tiling.</p>
+        </div>
+      </div>
+      <div class="card m-3" style="width: 260px;">
         <img src="./assets/truchet-tiles.png" class="card-img-top" alt="truchet iles">
         <div class="card-body">
           <p class="card-text fs-4">Programmatically generated truchet tiling.</p>
