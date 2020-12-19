@@ -6,34 +6,31 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>jwbraith.github.io</title>
     <link rel="shortcut icon" href="/assets/sunface-trans.png" type="image/x-icon">
+
+    <!-- Bootstrap CSS ref -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+      integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+
+    <!-- Own CSS ref -->
     <link rel="stylesheet" href="/styles/app.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.1.9/p5.min.js"
-      integrity="sha512-WIklPM6qPCIp6d3fSSr90j+1unQHUOoWDS4sdTiR8gxUTnyZ8S2Mr8e10sKKJ/bhJgpAa/qG068RDkg6fIlNFA=="
-      crossorigin="anonymous"></script>
   </head>
 
   <body>
     <div class="grid">
-      <header class="header">John Braithwaite</header>
-      <div class="gridItem" id="opener">
-        <div class="text">A student at British Columbia Institue of Technology.</div>
-      </div>
-      <div class="gridItem" id="explan">
-        <div class="text">
-          The canvas to the right displays a p5.js sketch which was written to make use of a Quadtree data structure to
-          enable collision detection at a decent frame-rate.
-        </div>
-        <div class="text">
-          <p>There are 2000 particles bouncing around, lighting up as their radii intersect.</p>
-        </div>
-      </div>
-      <div class="gridItem" id="sketch-holder"></div>
 
     </div>
 
     <script src="/scripts/index.js"></script>
-    <script src="/scripts/particle.js"></script>
-    <script src="/scripts/quadtree.js"></script>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW"
+      crossorigin="anonymous"></script>
+
+    <!-- p5.js ref -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.1.9/p5.min.js"
+      integrity="sha512-WIklPM6qPCIp6d3fSSr90j+1unQHUOoWDS4sdTiR8gxUTnyZ8S2Mr8e10sKKJ/bhJgpAa/qG068RDkg6fIlNFA=="
+      crossorigin="anonymous"></script>
   </body>
 
 </html>
