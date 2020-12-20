@@ -33,7 +33,7 @@ p {
   grid-column: 1 / span 5;
 }
 
-.navbar-brand {
+.navbar-brand, .nav-link {
   font-family: 'Noto Serif', serif;
 }
 
