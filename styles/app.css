@@ -86,3 +86,11 @@ hr {
   grid-template-rows: repeat(15, auto);
   place-items: start;
 }
+
+#contact {
+  width: 100vw;
+  height: 40vh;
+  grid-template-columns: auto auto;
+  grid-template-rows: auto;
+  place-items: center;
+}
