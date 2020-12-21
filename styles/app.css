@@ -41,6 +41,11 @@ p {
   margin: 0px;
 }
 
+.logo {
+  width: 32px;
+}
+
+
 /* id selectors */
 
 #main {
