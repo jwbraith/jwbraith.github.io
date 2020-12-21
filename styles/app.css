@@ -18,6 +18,16 @@ p {
   margin: 0px;
 }
 
+hr {
+  width: 80%;
+  border: 1px solid white;
+  color: white;
+  opacity: 0.0;
+  border-radius: 2px;
+  margin: 0.5rem;
+  place-self: center;
+}
+
 /* class selectors */
 
 .grid {
@@ -26,11 +36,8 @@ p {
 }
 
 .header {
-  font-size: 28pt;
   font-family: 'Noto Serif', serif;
   color: white;
-  grid-row: 1;
-  grid-column: 1 / span 5;
 }
 
 .navbar-brand, .nav-link {
@@ -42,11 +49,11 @@ p {
 }
 
 .logo {
-  width: 24px;
+  width: 32px;
 }
 @media only screen and (min-width: 768px) {
   .logo {
-    width: 32px;
+    width: 48px;
   }
 }
 
@@ -70,4 +77,12 @@ p {
   height: 80%;
   grid-template-columns: repeat(4, 1fr);
   grid-template-rows: auto;
+}
+
+#resume {
+  width: 100vw;
+  height: 100vh;
+  grid-template-columns: auto;
+  grid-template-rows: repeat(15, auto);
+  place-items: start;
 }
