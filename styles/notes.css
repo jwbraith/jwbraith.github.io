@@ -1,7 +1,42 @@
 @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap');
 
 body {
-  color:rgb(0,180,26);
+  margin: 0px;
+  padding: 0px;
+  color:rgb(0,205,26);
   font-family: 'JetBrains Mono', monospace;
   background-color: rgb(22,22,22);
+  width: 100vw;
+  height: 200vh;
+  display: grid;
+  grid-template-rows: auto auto 1fr auto;
+  grid-template-columns: auto;
+  place-items: center;
+  font-size: 13pt;
+}
+
+h1 {
+  font-weight: 700;
+}
+
+table {
+  width: 50%;
+  height: 25%;
+  margin: 6px;
+  text-align: center;
+}
+
+tr:nth-child(even) {
+  background: rgb(28,28,28);
+}
+
+th {
+  background-color: black;
+  font-weight: 700;
+}
+
+td {
+  font-weight: 400;
+  width: auto;
+  height: auto;
 }
