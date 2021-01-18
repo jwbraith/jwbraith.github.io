@@ -3,7 +3,8 @@
 body {
   display: grid;
   margin: 0px;
-  color:rgb(0,185,26);
+  /* color:rgb(0,185,26); */
+  color: rgb(210,210,210);
   font-family: 'JetBrains Mono', monospace;
   width: 100vw;
   height: 100vh;
@@ -17,8 +18,16 @@ h1 {
   grid-column: 1 / span 3;
 }
 
-.gridItems {
-  width: 300px;
+.gridItem {
+  width: 80%;
   height: 300px;
-  background-color: dimgray;
+  text-align: center;
+  background-color: rgb(28,28,28);
+  border: solid 4px rgb(210, 210, 210);
+  padding: 12px;
+}
+
+.gridItem:hover {
+  color: white;
+  border: solid 4px rgb(0,185,26);
 }
