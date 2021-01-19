@@ -51,6 +51,16 @@ td {
   height: 100%;
   /* border: rgb(0,185,26) solid 2px; */
 }
+
+.term {
+  grid-column: 1;
+  font-style: italic;
+}
+
+.def {
+  grid-column: 2 / span 2;
+}
+
 img {
   width: auto;
   height: auto;
