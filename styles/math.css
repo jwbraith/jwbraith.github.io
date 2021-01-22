@@ -10,7 +10,7 @@ body {
   height: 200vh;
   display: grid;
   grid-template-rows: auto auto auto auto 1fr;
-  grid-template-columns: 20vw auto auto auto;
+  grid-template-columns: 20vw auto auto;
   place-items: center;
   font-size: 13pt;
 }
@@ -90,9 +90,6 @@ a {
   margin: 6px;
 }
 
-.compLevels {
-  grid-row: 4;
-}
 
 #back {
   grid-row: 1;
@@ -101,18 +98,21 @@ a {
   height: auto;
   color: rgb(0, 185, 26);
   text-decoration: none;
-
 }
 
 #back:hover {
   color: white;
 }
 
-#table {
-  grid-column: 3 / span 2;
-}
 
 #levelsPic {
   grid-column: 3 /span 2;
 }
 
+.tableCell {
+  display:grid;
+  width: 100px;
+  height: 300px;
+  background-color: black;
+  place-items: center;
+}
