@@ -104,16 +104,27 @@ a {
   color: white;
 }
 
-
-#levelsPic {
-  grid-column: 3 /span 2;
+.equat {
+  font-size: 36pt;
 }
 
 .tableCell {
   margin: 10px;
   display:grid;
-  width: 95%%;
+  width: 95%;
   height: 150px;
   background-color: black;
   place-items: center;
+}
+
+.row1 {
+  grid-row: 2;
+}
+
+.row2 {
+  grid-row: 3;
+}
+
+.row3 {
+  grid-row: 4;
 }
