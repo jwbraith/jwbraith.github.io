@@ -25,6 +25,10 @@ a {
   text-decoration: none;
 }
 
+b {
+  font-weight: bold;
+}
+
 .gridItem {
   width: 80%;
   height: 300px;
